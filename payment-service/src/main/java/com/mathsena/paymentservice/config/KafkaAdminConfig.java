@@ -16,14 +16,14 @@ public class KafkaAdminConfig {
     private final KafkaProperties properties;
 
     @Bean
-    public KafkaAdmin kafkaAdmin(){
+    public KafkaAdmin kafkaAdmin() {
         var configs = new HashMap<String, Object>();
         configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, properties.getBootstrapServers());
         return new KafkaAdmin(configs);
     }
 
     @Bean
-    public KafkaAdmin.NewTopics newTopics(){
+    public KafkaAdmin.NewTopics newTopics() {
         return new KafkaAdmin.NewTopics(
                 TopicBuilder.name("payment-topic").partitions(1).build()
         );
